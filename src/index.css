@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -49,12 +50,12 @@ All colors MUST be HSL.
     --provider-failed: 0 84% 60%;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
-    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(220 14% 99%));
+    --gradient-primary: linear-gradient(135deg, hsl(262 83% 58%), hsl(262 100% 75%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(220 14% 99%));
     
     /* Shadows */
-    --shadow-soft: 0 2px 10px -2px hsl(var(--primary) / 0.1);
-    --shadow-glow: 0 0 20px hsl(var(--primary-glow) / 0.3);
+    --shadow-soft: 0 2px 10px -2px hsl(262 83% 58% / 0.1);
+    --shadow-glow: 0 0 20px hsl(262 100% 75% / 0.3);
     
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -62,19 +63,12 @@ All colors MUST be HSL.
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -88,8 +82,9 @@ All colors MUST be HSL.
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
+    --primary: 262 83% 58%;
     --primary-foreground: 222.2 47.4% 11.2%;
+    --primary-glow: 262 100% 75%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -100,12 +95,32 @@ All colors MUST be HSL.
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
 
+    --success: 142 76% 36%;
+    --success-foreground: 355 100% 97%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 48 96% 89%;
+
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+
+    /* Email service specific colors - dark mode */
+    --provider-healthy: 142 76% 36%;
+    --provider-degraded: 38 92% 50%;
+    --provider-failed: 0 84% 60%;
+    
+    /* Gradients - dark mode */
+    --gradient-primary: linear-gradient(135deg, hsl(262 83% 58%), hsl(262 100% 75%));
+    --gradient-card: linear-gradient(145deg, hsl(222.2 84% 4.9%), hsl(217.2 32.6% 17.5%));
+    
+    /* Shadows - dark mode */
+    --shadow-soft: 0 2px 10px -2px hsl(262 83% 58% / 0.2);
+    --shadow-glow: 0 0 20px hsl(262 100% 75% / 0.4);
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -123,6 +138,216 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Enhanced CSS reset for better cross-browser consistency */
+  html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  main {
+    display: block;
+  }
+
+  h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+  }
+
+  hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+  }
+
+  pre {
+    font-family: monospace, monospace;
+    font-size: 1em;
+  }
+
+  a {
+    background-color: transparent;
+  }
+
+  abbr[title] {
+    border-bottom: none;
+    text-decoration: underline;
+    text-decoration: underline dotted;
+  }
+
+  b,
+  strong {
+    font-weight: bolder;
+  }
+
+  code,
+  kbd,
+  samp {
+    font-family: monospace, monospace;
+    font-size: 1em;
+  }
+
+  small {
+    font-size: 80%;
+  }
+
+  sub,
+  sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  sub {
+    bottom: -0.25em;
+  }
+
+  sup {
+    top: -0.5em;
+  }
+
+  img {
+    border-style: none;
+  }
+
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  button,
+  input {
+    overflow: visible;
+  }
+
+  button,
+  select {
+    text-transform: none;
+  }
+
+  button,
+  [type="button"],
+  [type="reset"],
+  [type="submit"] {
+    -webkit-appearance: button;
+  }
+
+  button::-moz-focus-inner,
+  [type="button"]::-moz-focus-inner,
+  [type="reset"]::-moz-focus-inner,
+  [type="submit"]::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+  }
+
+  button:-moz-focusring,
+  [type="button"]:-moz-focusring,
+  [type="reset"]:-moz-focusring,
+  [type="submit"]:-moz-focusring {
+    outline: 1px dotted ButtonText;
+  }
+
+  fieldset {
+    padding: 0.35em 0.75em 0.625em;
+  }
+
+  legend {
+    box-sizing: border-box;
+    color: inherit;
+    display: table;
+    max-width: 100%;
+    padding: 0;
+    white-space: normal;
+  }
+
+  progress {
+    vertical-align: baseline;
+  }
+
+  textarea {
+    overflow: auto;
+  }
+
+  [type="checkbox"],
+  [type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+  }
+
+  [type="number"]::-webkit-inner-spin-button,
+  [type="number"]::-webkit-outer-spin-button {
+    height: auto;
+  }
+
+  [type="search"] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+  }
+
+  [type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+
+  ::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font: inherit;
+  }
+
+  details {
+    display: block;
+  }
+
+  summary {
+    display: list-item;
+  }
+
+  template {
+    display: none;
+  }
+
+  [hidden] {
+    display: none;
+  }
+}
+
+/* Custom utility classes for consistent styling */
+@layer utilities {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
