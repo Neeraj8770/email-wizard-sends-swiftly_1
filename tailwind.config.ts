@@ -62,11 +62,6 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				provider: {
-					healthy: 'hsl(var(--provider-healthy))',
-					degraded: 'hsl(var(--provider-degraded))',
-					failed: 'hsl(var(--provider-failed))'
-				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
